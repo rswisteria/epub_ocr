@@ -14,7 +14,7 @@ EPUB ファイルからテキストを抽出するための REST API です。�
 ## 環境要件
 
 ### Python 環境
-- **Python 3.10 以降**
+- **Python 3.10 以降**（PaddleOCR の依存関係のため）
 - **pip** パッケージマネージャー
 
 ### システム依存関係
@@ -43,7 +43,7 @@ brew install python3
 GPU を使用する場合は、CUDA ツールキットのインストールが必要です：
 
 ```bash
-# CUDA 11.2 の例（PaddlePaddle との互換性を確認してください）
+# PaddlePaddle 2.5.2 は CUDA 11.2-11.8 と CUDA 12.0 に対応
 # NVIDIA の公式サイトから CUDA ツールキットをダウンロードしてインストール
 ```
 
@@ -74,6 +74,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 
 # 開発・テスト用依存関係（開発者向け）
+# テスト実行、カバレッジ測定、並列実行用の依存関係
 pip install -r requirements-dev.txt
 ```
 
@@ -227,7 +228,7 @@ python main.py
 ```
 
 ### パフォーマンスの最適化
-- **GPU の使用**: CUDA が利用可能な環境では GPU が自動的に使用されます
+- **GPU の使用**: CUDA が利用可能な環境では GPU が自動的に使用されます（ログで確認可能）
 - **並列処理**: 複数の画像がある場合、ThreadPool で並列処理されます
 - **メモリ管理**: 大容量ファイルは自動的にチャンク処理されます
 
